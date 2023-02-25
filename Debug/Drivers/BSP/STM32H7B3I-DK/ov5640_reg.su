@@ -1,0 +1,2 @@
+../Drivers/BSP/STM32H7B3I-DK/ov5640_reg.c:46:9:ov5640_read_reg	32	static
+../Drivers/BSP/STM32H7B3I-DK/ov5640_reg.c:59:9:ov5640_write_reg	32	static
