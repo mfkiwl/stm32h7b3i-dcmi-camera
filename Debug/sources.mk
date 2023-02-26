@@ -21,8 +21,16 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+Core/Peripherials/camera \
+Core/Peripherials/delay \
+Core/Peripherials/flash \
+Core/Peripherials/fonts \
+Core/Peripherials/i2c \
+Core/Peripherials/lcd \
+Core/Peripherials/led \
+Core/Peripherials/sdram \
+Core/Peripherials/usart \
 Core/Src \
 Core/Startup \
-Drivers/BSP/STM32H7B3I-DK \
 Drivers/STM32H7xx_HAL_Driver/Src \
 

@@ -4,24 +4,24 @@
   * @author  fire
   * @version V1.0
   * @date    2016-xx-xx
-  * @brief   Ê¹ÓÃ´®¿Ú2£¬ÖØ¶¨Ïòc¿âprintfº¯Êýµ½usart¶Ë¿Ú
+  * @brief   Ê¹ï¿½Ã´ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½cï¿½ï¿½printfï¿½ï¿½ï¿½ï¿½ï¿½ï¿½usartï¿½Ë¿ï¿½
   ******************************************************************************
   * @attention
   *
-  * ÊµÑéÆ½Ì¨:Ò°»ð  STM32 H743 ¿ª·¢°å  
-  * ÂÛÌ³    :http://www.firebbs.cn
-  * ÌÔ±¦    :http://firestm32.taobao.com
+  * Êµï¿½ï¿½Æ½Ì¨:Ò°ï¿½ï¿½  STM32 H743 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
+  * ï¿½ï¿½Ì³    :http://www.firebbs.cn
+  * ï¿½Ô±ï¿½    :http://firestm32.taobao.com
   *
   ******************************************************************************
   */ 
   
-#include "./usart/bsp_usart.h"
+#include "bsp_usart.h"
 
 UART_HandleTypeDef UartHandle;
  /**
-  * @brief  USARTx GPIO ÅäÖÃ,¹¤×÷Ä£Ê½ÅäÖÃ¡£115200 8-N-1
-  * @param  ÎÞ
-  * @retval ÎÞ
+  * @brief  USARTx GPIO ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½Ã¡ï¿½115200 8-N-1
+  * @param  ï¿½ï¿½
+  * @retval ï¿½ï¿½
   */  
 void UARTx_Config(void)
 {
@@ -32,18 +32,18 @@ void UARTx_Config(void)
 	UARTx_RX_GPIO_CLK_ENABLE();
 	UARTx_TX_GPIO_CLK_ENABLE();
 	
-	/* ÅäÖÃ´®¿Ú2Ê±ÖÓÔ´*/
+	/* ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½2Ê±ï¿½ï¿½Ô´*/
 	RCC_PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1;
 	RCC_PeriphClkInit.Usart16ClockSelection = RCC_USART16CLKSOURCE_D2PCLK2;
 	HAL_RCCEx_PeriphCLKConfig(&RCC_PeriphClkInit);
-	/* Ê¹ÄÜ UART Ê±ÖÓ */
+	/* Ê¹ï¿½ï¿½ UART Ê±ï¿½ï¿½ */
 	UARTx_CLK_ENABLE();
 
 	/**USART1 GPIO Configuration    
     PA9     ------> USART1_TX
     PA10    ------> USART1_RX 
 	*/
-	/* ÅäÖÃTxÒý½ÅÎª¸´ÓÃ¹¦ÄÜ  */
+	/* ï¿½ï¿½ï¿½ï¿½Txï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½  */
 	GPIO_InitStruct.Pin = UARTx_TX_PIN;
 	GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
 	GPIO_InitStruct.Pull = GPIO_PULLUP;
@@ -51,12 +51,12 @@ void UARTx_Config(void)
 	GPIO_InitStruct.Alternate = UARTx_TX_AF;
 	HAL_GPIO_Init(UARTx_TX_GPIO_PORT, &GPIO_InitStruct);
 	
-	/* ÅäÖÃRxÒý½ÅÎª¸´ÓÃ¹¦ÄÜ */
+	/* ï¿½ï¿½ï¿½ï¿½Rxï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ */
 	GPIO_InitStruct.Pin = UARTx_RX_PIN;
 	GPIO_InitStruct.Alternate = UARTx_RX_AF;
 	HAL_GPIO_Init(UARTx_RX_GPIO_PORT, &GPIO_InitStruct); 
 	
-	/* ÅäÖÃ´®USARTx Ä£Ê½ */
+	/* ï¿½ï¿½ï¿½Ã´ï¿½USARTx Ä£Ê½ */
 	UartHandle.Instance = UARTx;
 	UartHandle.Init.BaudRate = 115200;
 	UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
@@ -67,19 +67,19 @@ void UARTx_Config(void)
 
 }
 
-///ÖØ¶¨Ïòc¿âº¯Êýprintfµ½´®¿ÚUSARTx£¬ÖØ¶¨Ïòºó¿ÉÊ¹ÓÃprintfº¯Êý
+///ï¿½Ø¶ï¿½ï¿½ï¿½cï¿½âº¯ï¿½ï¿½printfï¿½ï¿½ï¿½ï¿½ï¿½ï¿½USARTxï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½printfï¿½ï¿½ï¿½ï¿½
 int fputc(int ch, FILE *f)
 {
-    /* ·¢ËÍÒ»¸ö×Ö½ÚÊý¾Ýµ½´®¿ÚUSARTx */
+    /* ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½USARTx */
 	HAL_UART_Transmit(&UartHandle, (uint8_t *)&ch, 1, 0xFFFF);
 	return (ch);
 }
 
-///ÖØ¶¨Ïòc¿âº¯Êýscanfµ½´®¿ÚUSARTx£¬ÖØÐ´Ïòºó¿ÉÊ¹ÓÃscanf¡¢getcharµÈº¯Êý
+///ï¿½Ø¶ï¿½ï¿½ï¿½cï¿½âº¯ï¿½ï¿½scanfï¿½ï¿½ï¿½ï¿½ï¿½ï¿½USARTxï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½scanfï¿½ï¿½getcharï¿½Èºï¿½ï¿½ï¿½
 int fgetc(FILE *f)
 {	
 	int ch;
-	/* µÈ´ý´®¿ÚÊäÈëÊý¾Ý */
+	/* ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	while(__HAL_UART_GET_FLAG(&UartHandle, UART_FLAG_RXNE) == RESET);
 	__HAL_UART_CLEAR_OREFLAG(&UartHandle);
 	HAL_UART_Receive(&UartHandle, (uint8_t *)&ch, 1, 0xFFFF);

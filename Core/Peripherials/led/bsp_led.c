@@ -4,58 +4,58 @@
   * @author  fire
   * @version V1.0
   * @date    2018-xx-xx
-  * @brief   led应用函数接口
+  * @brief   led应锟矫猴拷锟斤拷锟接匡拷
   ******************************************************************
   * @attention
   *
-  * 实验平台:野火 STM32H743开发板 
-  * 论坛    :http://www.firebbs.cn
-  * 淘宝    :http://firestm32.taobao.com
+  * 实锟斤拷平台:野锟斤拷 STM32H743锟斤拷锟斤拷锟斤拷 
+  * 锟斤拷坛    :http://www.firebbs.cn
+  * 锟皆憋拷    :http://firestm32.taobao.com
   *
   ******************************************************************
   */  
   
-#include "./led/bsp_led.h"   
+#include "bsp_led.h"
 
  /**
-  * @brief  初始化控制LED的IO
-  * @param  无
-  * @retval 无
+  * @brief  锟斤拷始锟斤拷锟斤拷锟斤拷LED锟斤拷IO
+  * @param  锟斤拷
+  * @retval 锟斤拷
   */
 void LED_GPIO_Config(void)
 {		
-	/*定义一个GPIO_InitTypeDef类型的结构体*/
+	/*锟斤拷锟斤拷一锟斤拷GPIO_InitTypeDef锟斤拷锟酵的结构锟斤拷*/
 	GPIO_InitTypeDef  GPIO_InitStruct;
 
-	/*开启LED相关的GPIO外设时钟*/
+	/*锟斤拷锟斤拷LED锟斤拷氐锟紾PIO锟斤拷锟斤拷时锟斤拷*/
 	LED1_GPIO_CLK_ENABLE();
 	LED2_GPIO_CLK_ENABLE();
 	LED3_GPIO_CLK_ENABLE();
 
-	/*选择要控制的GPIO引脚*/															   
+	/*选锟斤拷要锟斤拷锟狡碉拷GPIO锟斤拷锟斤拷*/															   
 	GPIO_InitStruct.Pin = LED1_PIN;	
 
-	/*设置引脚的输出类型为推挽输出*/
+	/*锟斤拷锟斤拷锟斤拷锟脚碉拷锟斤拷锟斤拷锟斤拷锟轿拷锟斤拷锟斤拷锟斤拷*/
 	GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;  
 
-	/*设置引脚为上拉模式*/
+	/*锟斤拷锟斤拷锟斤拷锟斤拷为锟斤拷锟斤拷模式*/
 	GPIO_InitStruct.Pull  = GPIO_PULLUP;
 
-	/*设置引脚速率为高速 */   
+	/*锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷为锟斤拷锟斤拷 */   
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH; 
 
-	/*调用库函数，使用上面配置的GPIO_InitStructure初始化GPIO*/
+	/*锟斤拷锟矫库函锟斤拷锟斤拷使锟斤拷锟斤拷锟斤拷锟斤拷锟矫碉拷GPIO_InitStructure锟斤拷始锟斤拷GPIO*/
 	HAL_GPIO_Init(LED1_GPIO_PORT, &GPIO_InitStruct);	
 
-	/*选择要控制的GPIO引脚*/															   
+	/*选锟斤拷要锟斤拷锟狡碉拷GPIO锟斤拷锟斤拷*/															   
 	GPIO_InitStruct.Pin = LED2_PIN;	
 	HAL_GPIO_Init(LED2_GPIO_PORT, &GPIO_InitStruct);	
 
-	/*选择要控制的GPIO引脚*/															   
+	/*选锟斤拷要锟斤拷锟狡碉拷GPIO锟斤拷锟斤拷*/															   
 	GPIO_InitStruct.Pin = LED3_PIN;	
 	HAL_GPIO_Init(LED3_GPIO_PORT, &GPIO_InitStruct);	
 
-	/*关闭RGB灯*/
+	/*锟截憋拷RGB锟斤拷*/
 	LED_RGBOFF;
 		
 }

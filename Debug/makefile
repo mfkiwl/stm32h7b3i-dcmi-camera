@@ -10,9 +10,17 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Drivers/STM32H7xx_HAL_Driver/Src/subdir.mk
--include Drivers/BSP/STM32H7B3I-DK/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
+-include Core/Peripherials/usart/subdir.mk
+-include Core/Peripherials/sdram/subdir.mk
+-include Core/Peripherials/led/subdir.mk
+-include Core/Peripherials/lcd/subdir.mk
+-include Core/Peripherials/i2c/subdir.mk
+-include Core/Peripherials/fonts/subdir.mk
+-include Core/Peripherials/flash/subdir.mk
+-include Core/Peripherials/delay/subdir.mk
+-include Core/Peripherials/camera/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)

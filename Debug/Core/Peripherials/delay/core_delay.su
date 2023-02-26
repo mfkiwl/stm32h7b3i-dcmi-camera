@@ -1,0 +1,4 @@
+../Core/Peripherials/delay/core_delay.c:55:19:HAL_InitTick	16	static
+../Core/Peripherials/delay/core_delay.c:74:10:CPU_TS_TmrRd	4	static
+../Core/Peripherials/delay/core_delay.c:84:10:HAL_GetTick	4	static
+../Core/Peripherials/delay/core_delay.c:98:6:CPU_TS_Tmr_Delay_US	32	static

@@ -14,9 +14,9 @@
 * GLOBALS AFFECTED
 *
 *************************************************************************/
-#include "./camera/ov5640_AF.h"
-#include "./i2c/bsp_i2c.h"
-#include "./delay/core_delay.h"  
+#include "ov5640_AF.h"
+#include "../i2c/bsp_i2c.h"
+#include "../delay/core_delay.h"
 //static void OV5640_FOCUS_AD5820_Check_MCU(void);
 
 static unsigned char OV5640_AF_FW[] =    
@@ -281,7 +281,7 @@ static void OV5640_FOCUS_AD5820_Init(void)
     totalCnt = sizeof(OV5640_AF_FW); 
     CAMERA_DEBUG("Total Count = %d\n", totalCnt);
 
-//  Ð´Èë×Ô¶¯¶Ô½¹¹Ì¼þ Brust mode
+//  Ð´ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½Ô½ï¿½ï¿½Ì¼ï¿½ Brust mode
     OV5640_WriteFW(OV5640_AF_FW,totalCnt);
 
     OV5640_WriteReg(0x3022, 0x00);

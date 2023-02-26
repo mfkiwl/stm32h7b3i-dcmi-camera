@@ -4,39 +4,39 @@
   * @author  fire
   * @version V1.0
   * @date    2015-xx-xx
-  * @brief   i2c ×ÜÏßÇý¶¯£¬·½±ãÓë¸÷ÖÖI2C´«¸ÐÆ÷Í¨Ñ¶¡£
+  * @brief   i2c ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½I2Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Ñ¶ï¿½ï¿½
   ******************************************************************************
   * @attention
   *
-  * ÊµÑéÆ½Ì¨:±ü»ð  STM32 F767 ¿ª·¢°å 
-  * ÂÛÌ³    :http://www.firebbs.cn
-  * ÌÔ±¦    :http://firestm32.taobao.com
+  * Êµï¿½ï¿½Æ½Ì¨:ï¿½ï¿½ï¿½ï¿½  STM32 F767 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+  * ï¿½ï¿½Ì³    :http://www.firebbs.cn
+  * ï¿½Ô±ï¿½    :http://firestm32.taobao.com
   *
   ******************************************************************************
   */ 
-#include "./i2c/bsp_i2c.h"
+#include "bsp_i2c.h"
 #include "./delay/core_delay.h"  
   
 I2C_HandleTypeDef I2C_Handle;					
 /*******************************  Function ************************************/
 
 /**
-  * @brief  ³õÊ¼»¯I2C×ÜÏß£¬Ê¹ÓÃI2CÇ°ÐèÒªµ÷ÓÃ
-  * @param  ÎÞ
-  * @retval ÎÞ
+  * @brief  ï¿½ï¿½Ê¼ï¿½ï¿½I2Cï¿½ï¿½ï¿½ß£ï¿½Ê¹ï¿½ï¿½I2CÇ°ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½
+  * @param  ï¿½ï¿½
+  * @retval ï¿½ï¿½
   */
 void I2CMaster_Init(void) 
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 
-	/* Ê¹ÄÜI2CxÊ±ÖÓ */
+	/* Ê¹ï¿½ï¿½I2CxÊ±ï¿½ï¿½ */
 	SENSORS_I2C_RCC_CLK_ENABLE();
 
-	/* Ê¹ÄÜI2C GPIO Ê±ÖÓ */
+	/* Ê¹ï¿½ï¿½I2C GPIO Ê±ï¿½ï¿½ */
 	SENSORS_I2C_SCL_GPIO_CLK_ENABLE();
 	SENSORS_I2C_SDA_GPIO_CLK_ENABLE();
 
-	/* ÅäÖÃI2CxÒý½Å: SCL ----------------------------------------*/
+	/* ï¿½ï¿½ï¿½ï¿½I2Cxï¿½ï¿½ï¿½ï¿½: SCL ----------------------------------------*/
 	GPIO_InitStructure.Pin =  SENSORS_I2C_SCL_GPIO_PIN; 
 	GPIO_InitStructure.Mode = GPIO_MODE_AF_OD;
 	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_HIGH;
@@ -44,19 +44,19 @@ void I2CMaster_Init(void)
 	GPIO_InitStructure.Alternate=SENSORS_I2C_AF; 
 	HAL_GPIO_Init(SENSORS_I2C_SCL_GPIO_PORT, &GPIO_InitStructure);
 
-	/* ÅäÖÃI2CxÒý½Å: SDA ----------------------------------------*/
+	/* ï¿½ï¿½ï¿½ï¿½I2Cxï¿½ï¿½ï¿½ï¿½: SDA ----------------------------------------*/
 	GPIO_InitStructure.Pin = SENSORS_I2C_SDA_GPIO_PIN;  
 	HAL_GPIO_Init(SENSORS_I2C_SDA_GPIO_PORT, &GPIO_InitStructure); 
 	
 	if(HAL_I2C_GetState(&I2C_Handle) == HAL_I2C_STATE_RESET)
 	{	
-		/* Ç¿ÖÆ¸´Î»I2CÍâÉèÊ±ÖÓ */  
+		/* Ç¿ï¿½Æ¸ï¿½Î»I2Cï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ */  
 		SENSORS_I2C_FORCE_RESET(); 
 
-		/* ÊÍ·ÅI2CÍâÉèÊ±ÖÓ¸´Î» */  
+		/* ï¿½Í·ï¿½I2Cï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ó¸ï¿½Î» */  
 		SENSORS_I2C_RELEASE_RESET(); 
 		
-		/* I2C ÅäÖÃ */
+		/* I2C ï¿½ï¿½ï¿½ï¿½ */
 		I2C_Handle.Instance = SENSORS_I2C;
 		I2C_Handle.Init.Timing           = 0x40604E73;//100KHz
 		I2C_Handle.Init.OwnAddress1      = 0;
@@ -67,9 +67,9 @@ void I2CMaster_Init(void)
 		I2C_Handle.Init.GeneralCallMode  = I2C_GENERALCALL_DISABLE;
 		I2C_Handle.Init.NoStretchMode    = I2C_NOSTRETCH_DISABLE;
 
-		/* ³õÊ¼»¯I2C */
+		/* ï¿½ï¿½Ê¼ï¿½ï¿½I2C */
 		HAL_I2C_Init(&I2C_Handle);	
-		/* Ê¹ÄÜÄ£ÄâÂË²¨Æ÷ */
+		/* Ê¹ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ë²ï¿½ï¿½ï¿½ */
 		HAL_I2CEx_AnalogFilter_Config(&I2C_Handle, I2C_ANALOGFILTER_ENABLE); 
     
     
@@ -83,16 +83,16 @@ void I2CMaster_Init(void)
   */
 static void I2Cx_Error(void)
 {
-	/* »Ö¸´I2C¼Ä´æÆ÷ÎªÄ¬ÈÏÖµ */
+	/* ï¿½Ö¸ï¿½I2Cï¿½Ä´ï¿½ï¿½ï¿½ÎªÄ¬ï¿½ï¿½Öµ */
 	HAL_I2C_DeInit(&I2C_Handle); 
-	/* ÖØÐÂ³õÊ¼»¯I2CÍâÉè */
+	/* ï¿½ï¿½ï¿½Â³ï¿½Ê¼ï¿½ï¿½I2Cï¿½ï¿½ï¿½ï¿½ */
 	I2CMaster_Init();
 }
 /**
-  * @brief  Ð´Ò»×Ö½ÚÊý¾Ýµ½OV2640¼Ä´æÆ÷
-  * @param  Addr: OV2640 µÄ¼Ä´æÆ÷µØÖ·
-  * @param  Data: ÒªÐ´ÈëµÄÊý¾Ý
-  * @retval ·µ»Ø0±íÊ¾Ð´ÈëÕý³££¬0xFF±íÊ¾´íÎó
+  * @brief  Ð´Ò»ï¿½Ö½ï¿½ï¿½ï¿½ï¿½Ýµï¿½OV2640ï¿½Ä´ï¿½ï¿½ï¿½
+  * @param  Addr: OV2640 ï¿½Ä¼Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
+  * @param  Data: ÒªÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  * @retval ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½Ê¾Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0xFFï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
   */
 uint8_t OV5640_WriteReg(uint16_t Addr, uint8_t Data)
 {
@@ -112,9 +112,9 @@ uint8_t OV5640_WriteReg(uint16_t Addr, uint8_t Data)
 }
 
 /**
-  * @brief  ´ÓOV2640¼Ä´æÆ÷ÖÐ¶ÁÈ¡Ò»¸ö×Ö½ÚµÄÊý¾Ý
-  * @param  Addr: ¼Ä´æÆ÷µØÖ·
-  * @retval ·µ»Ø¶ÁÈ¡µÃµÄÊý¾Ý
+  * @brief  ï¿½ï¿½OV2640ï¿½Ä´ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½È¡Ò»ï¿½ï¿½ï¿½Ö½Úµï¿½ï¿½ï¿½ï¿½ï¿½
+  * @param  Addr: ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
+  * @retval ï¿½ï¿½ï¿½Ø¶ï¿½È¡ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½
   */
 uint8_t OV5640_ReadReg(uint16_t Addr)
 {
@@ -136,10 +136,10 @@ uint8_t OV5640_ReadReg(uint16_t Addr)
 }
 
 /**
-  * @brief  ½«¹Ì¼þÐ´Èëµ½OV5640Æ¬ÄÚMCU
-  * @param  Addr: OV5640 µÄMCU»ùµØÖ·0x8000
-  * @param  Data: ÒªÐ´ÈëµÄÊý¾Ý
-  * @retval ·µ»Ø0±íÊ¾Ð´ÈëÕý³££¬0xFF±íÊ¾´íÎó
+  * @brief  ï¿½ï¿½ï¿½Ì¼ï¿½Ð´ï¿½ëµ½OV5640Æ¬ï¿½ï¿½MCU
+  * @param  Addr: OV5640 ï¿½ï¿½MCUï¿½ï¿½ï¿½ï¿½Ö·0x8000
+  * @param  Data: ÒªÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  * @retval ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½Ê¾Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0xFFï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
   */
 uint8_t OV5640_WriteFW(uint8_t *pBuffer ,uint16_t BufferSize)
 {
@@ -148,10 +148,10 @@ uint8_t OV5640_WriteFW(uint8_t *pBuffer ,uint16_t BufferSize)
   
   status = HAL_I2C_Mem_Write(&I2C_Handle, OV5640_DEVICE_ADDRESS, (uint16_t)Addr, I2C_MEMADD_SIZE_16BIT, pBuffer, BufferSize, 1000);
   
-  /* ¼ì²éÍ¨ÐÅ×´Ì¬ */
+  /* ï¿½ï¿½ï¿½Í¨ï¿½ï¿½×´Ì¬ */
   if(status != HAL_OK)
   {
-    /* ·¢Éú´íÎóÖØÐÂ³õÊ¼»¯I2C */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â³ï¿½Ê¼ï¿½ï¿½I2C */
     I2Cx_Error();
   }
   return status;

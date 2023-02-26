@@ -34,14 +34,14 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32h7xx.h"
-#include "./lcd/bsp_lcd.h"
+#include "../lcd/bsp_lcd.h"
 #include "stm32h7xx_hal.h"
 
 extern DCMI_HandleTypeDef DCMI_Handle;
 
 
-/*ÉãÏñÍ·²É¼¯Í¼ÏñµÄ´óÐ¡£¬¸Ä±äÕâÁ½¸öÖµ¿ÉÒÔ¸Ä±äÊý¾ÝÁ¿£¬
-µ«²»»á¼Ó¿ì²É¼¯ËÙ¶È£¬Òª¼Ó¿ì²É¼¯ËÙ¶ÈÐèÒª¸Ä³ÉSVGAÄ£Ê½*/
+/*ï¿½ï¿½ï¿½ï¿½Í·ï¿½É¼ï¿½Í¼ï¿½ï¿½Ä´ï¿½Ð¡ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Ô¸Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½É¼ï¿½ï¿½Ù¶È£ï¿½Òªï¿½Ó¿ï¿½É¼ï¿½ï¿½Ù¶ï¿½ï¿½ï¿½Òªï¿½Ä³ï¿½SVGAÄ£Ê½*/
 #define img_width  800
 #define img_height 480
 
@@ -63,7 +63,7 @@ typedef enum
 }ImageFormat_TypeDef;
 
 
-/*ÉãÏñÍ·½Ó¿Ú */
+/*ï¿½ï¿½ï¿½ï¿½Í·ï¿½Ó¿ï¿½ */
 //IIC SCCB
 #define CAMERA_I2C                          I2C1
 #define CAMERA_I2C_CLK_ENABLE()             __HAL_RCC_I2C1_CLK_ENABLE()
@@ -103,7 +103,7 @@ typedef enum
 #define DCMI_RST_GPIO_CLK_ENABLE()          __HAL_RCC_GPIOB_CLK_ENABLE()
 #define DCMI_RST_GPIO_PIN         	        GPIO_PIN_5
 
-//Êý¾ÝÐÅºÅÏß
+//ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½ï¿½
 #define DCMI_D0_GPIO_PORT        	        GPIOH
 #define DCMI_D0_GPIO_CLK_ENABLE()         	__HAL_RCC_GPIOH_CLK_ENABLE()
 #define DCMI_D0_GPIO_PIN         	        GPIO_PIN_9
@@ -183,7 +183,7 @@ typedef enum
 
 
 /* Exported types ------------------------------------------------------------*/
-//´æ´¢ÉãÏñÍ·IDµÄ½á¹¹Ìå
+//ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½Í·IDï¿½Ä½á¹¹ï¿½ï¿½
 typedef struct
 {
   uint8_t PIDH;

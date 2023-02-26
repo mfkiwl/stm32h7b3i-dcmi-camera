@@ -29,7 +29,7 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "stm32h7xx.h"
-#include "./camera/bsp_ov5640.h"
+#include "bsp_ov5640.h"
 //#define Delay(ms)  Delay_ms(ms)
 
 void OV5640_AUTO_FOCUS(void);

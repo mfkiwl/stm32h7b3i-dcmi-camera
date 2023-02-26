@@ -1,0 +1,7 @@
+../Core/Peripherials/sdram/bsp_sdram.c:27:13:SDRAM_delay	24	static
+../Core/Peripherials/sdram/bsp_sdram.c:40:13:SDRAM_GPIO_Config	184	static
+../Core/Peripherials/sdram/bsp_sdram.c:197:13:SDRAM_InitSequence	16	static
+../Core/Peripherials/sdram/bsp_sdram.c:263:6:SDRAM_Init	240	static
+../Core/Peripherials/sdram/bsp_sdram.c:327:6:SDRAM_WriteBuffer	32	static
+../Core/Peripherials/sdram/bsp_sdram.c:357:6:SDRAM_ReadBuffer	32	static
+../Core/Peripherials/sdram/bsp_sdram.c:383:9:SDRAM_Test	24	static

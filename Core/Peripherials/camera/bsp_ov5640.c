@@ -4,22 +4,22 @@
   * @author  fire
   * @version V1.0
   * @date    2015-xx-xx
-  * @brief   OV5640ÉãÏñÍ·Çý¶¯
+  * @brief   OV5640ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½
   ******************************************************************************
   * @attention
   *
-  * ÊµÑéÆ½Ì¨:±ü»ð  STM32 H743 ¿ª·¢°å  
-  * ÂÛÌ³    :http://www.firebbs.cn
-  * ÌÔ±¦    :http://firestm32.taobao.com
+  * Êµï¿½ï¿½Æ½Ì¨:ï¿½ï¿½ï¿½ï¿½  STM32 H743 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
+  * ï¿½ï¿½Ì³    :http://www.firebbs.cn
+  * ï¿½Ô±ï¿½    :http://firestm32.taobao.com
   *
   ******************************************************************************
   */
 
 
 /* Includes ------------------------------------------------------------------*/
-#include "./camera/bsp_ov5640.h"
-#include "./i2c/bsp_i2c.h"
-#include "./delay/core_delay.h"  
+#include "bsp_ov5640.h"
+#include "../i2c/bsp_i2c.h"
+#include "../delay/core_delay.h"
 DCMI_HandleTypeDef DCMI_Handle;
 DMA_HandleTypeDef DMA_Handle_dcmi;
 /** @addtogroup DCMI_Camera
@@ -122,7 +122,7 @@ unsigned short RGB565_Init[][2]=
 
     0x3622, 0x01,
 
-    // 50/60Hz detection 50/60Hz µÆ¹âÌõÎÆ¹ýÂË
+    // 50/60Hz detection 50/60Hz ï¿½Æ¹ï¿½ï¿½ï¿½ï¿½Æ¹ï¿½ï¿½ï¿½
 
     0x3c01, 0x34, // Band auto, bit[7]
 
@@ -174,7 +174,7 @@ unsigned short RGB565_Init[][2]=
 
     0x5000, 0xa7, // Lenc on, raw gamma on, BPC on, WPC on, CIP on
 
-    // AEC target ×Ô¶¯ÆØ¹â¿ØÖÆ
+    // AEC target ï¿½Ô¶ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½ï¿½
 
     0x3a0f, 0x30, // stable range in high
 
@@ -188,7 +188,7 @@ unsigned short RGB565_Init[][2]=
 
     0x3a1f, 0x14, // fast zone low
 
-    // Lens correction for ? ¾µÍ·²¹³¥
+    // Lens correction for ? ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½
 
     0x5800, 0x23,
 
@@ -314,7 +314,7 @@ unsigned short RGB565_Init[][2]=
 
     0x583d, 0xce, // lenc BR offset
 
-    // AWB ×Ô¶¯°×Æ½ºâ
+    // AWB ï¿½Ô¶ï¿½ï¿½ï¿½Æ½ï¿½ï¿½
 
     0x5180, 0xff, // AWB B block
 
@@ -378,7 +378,7 @@ unsigned short RGB565_Init[][2]=
 
     0x519e, 0x38, // AWB control
 
-    // Gamma Ù¤ÂêÇúÏß
+    // Gamma Ù¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     0x5480, 0x01, // Gamma bias plus on, bit[0]
 
@@ -414,7 +414,7 @@ unsigned short RGB565_Init[][2]=
 
     0x5490, 0x1d,
 
-    // color matrix É«²Ê¾ØÕó
+    // color matrix É«ï¿½Ê¾ï¿½ï¿½ï¿½
 
     0x5381, 0x1e, // CMX1 for Y
 
@@ -438,7 +438,7 @@ unsigned short RGB565_Init[][2]=
 
     0x538b, 0x98, // sign[8:1]
 
-    // UV adjust UV É«²Ê±¥ºÍ¶Èµ÷Õû
+    // UV adjust UV É«ï¿½Ê±ï¿½ï¿½Í¶Èµï¿½ï¿½ï¿½
 
     0x5580, 0x06, // saturation on, bit[1]
 
@@ -454,7 +454,7 @@ unsigned short RGB565_Init[][2]=
 
     0x501d, 0x40, // enable manual offset of contrast
 
-    // CIP Èñ»¯ºÍ½µÔë
+    // CIP ï¿½ñ»¯ºÍ½ï¿½ï¿½ï¿½
 
     0x5300, 0x08, // CIP sharpen MT threshold 1
 
@@ -486,7 +486,7 @@ unsigned short RGB565_Init[][2]=
 
    
 
-//    0x503d, 0x80,//²âÊÔ²ÊÌõ
+//    0x503d, 0x80,//ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½
 
 //    0x4741, 0x00,
 
@@ -823,13 +823,13 @@ unsigned short RGB565_WVGA[][2]=
     0x3503, 0x00, // AEC/AGC on//	  /* Initialize OV5640 */
 
 
-//    0x503d, 0x80,//²âÊÔ²ÊÌõ
+//    0x503d, 0x80,//ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½
 
 //    0x4741, 0x00,
 
 };
 /**
-  * @brief  ³õÊ¼»¯¿ØÖÆÉãÏñÍ·Ê¹ÓÃµÄGPIO(I2C/DCMI)
+  * @brief  ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·Ê¹ï¿½Ãµï¿½GPIO(I2C/DCMI)
   * @param  None
   * @retval None
   */
@@ -837,8 +837,8 @@ void OV5640_HW_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
 
-    /***DCMIÒý½ÅÅäÖÃ***/
-    /* Ê¹ÄÜDCMIÊ±ÖÓ */
+    /***DCMIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½***/
+    /* Ê¹ï¿½ï¿½DCMIÊ±ï¿½ï¿½ */
     DCMI_PWDN_GPIO_CLK_ENABLE();
     DCMI_RST_GPIO_CLK_ENABLE();
     DCMI_VSYNC_GPIO_CLK_ENABLE();
@@ -853,7 +853,7 @@ void OV5640_HW_Init(void)
     DCMI_D6_GPIO_CLK_ENABLE();
     DCMI_D7_GPIO_CLK_ENABLE();
 
-    /*¿ØÖÆ/Í¬²½ÐÅºÅÏß*/
+    /*ï¿½ï¿½ï¿½ï¿½/Í¬ï¿½ï¿½ï¿½Åºï¿½ï¿½ï¿½*/
     GPIO_InitStructure.Pin = DCMI_VSYNC_GPIO_PIN;
     GPIO_InitStructure.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -870,7 +870,7 @@ void OV5640_HW_Init(void)
     GPIO_InitStructure.Alternate = DCMI_PIXCLK_AF;
     HAL_GPIO_Init(DCMI_PIXCLK_GPIO_PORT, &GPIO_InitStructure);
 
-    /*Êý¾ÝÐÅºÅ*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½*/
     GPIO_InitStructure.Pin = DCMI_D0_GPIO_PIN;
     GPIO_InitStructure.Alternate = DCMI_D0_AF;
     HAL_GPIO_Init(DCMI_D0_GPIO_PORT, &GPIO_InitStructure);
@@ -912,13 +912,13 @@ void OV5640_HW_Init(void)
     HAL_GPIO_Init(DCMI_RST_GPIO_PORT, &GPIO_InitStructure);
 
     HAL_GPIO_WritePin(DCMI_RST_GPIO_PORT,DCMI_RST_GPIO_PIN,GPIO_PIN_RESET);
-    /*PWDNÒý½Å£¬¸ßµçÆ½¹Ø±ÕµçÔ´£¬µÍµçÆ½¹©µç*/
+    /*PWDNï¿½ï¿½ï¿½Å£ï¿½ï¿½ßµï¿½Æ½ï¿½Ø±Õµï¿½Ô´ï¿½ï¿½ï¿½Íµï¿½Æ½ï¿½ï¿½ï¿½ï¿½*/
     HAL_GPIO_WritePin(DCMI_PWDN_GPIO_PORT,DCMI_PWDN_GPIO_PIN,GPIO_PIN_SET);
    
     HAL_GPIO_WritePin(DCMI_PWDN_GPIO_PORT,DCMI_PWDN_GPIO_PIN,GPIO_PIN_RESET);
     Delay(10);
     HAL_GPIO_WritePin(DCMI_RST_GPIO_PORT,DCMI_RST_GPIO_PIN,GPIO_PIN_SET);
-    //±ØÐëÑÓÊ±50ms,Ä£¿é²Å»áÕý³£¹¤×÷
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±50ms,Ä£ï¿½ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     Delay(50);
 }
 /**
@@ -928,86 +928,86 @@ void OV5640_HW_Init(void)
   */
 void OV5640_Reset(void)
 {
-	/*OV5640Èí¼þ¸´Î»*/
+	/*OV5640ï¿½ï¿½ï¿½ï¿½ï¿½Î»*/
   OV5640_WriteReg(0x3008, 0x80);
 }
 
 /**
-  * @brief  ¶ÁÈ¡ÉãÏñÍ·µÄID.
-  * @param  OV5640ID: ´æ´¢IDµÄ½á¹¹Ìå
+  * @brief  ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ID.
+  * @param  OV5640ID: ï¿½æ´¢IDï¿½Ä½á¹¹ï¿½ï¿½
   * @retval None
   */
 void OV5640_ReadID(OV5640_IDTypeDef *OV5640ID)
 {
 
-	/*¶ÁÈ¡¼Ä´æÐ¾Æ¬ID*/
+	/*ï¿½ï¿½È¡ï¿½Ä´ï¿½Ð¾Æ¬ID*/
   OV5640ID->PIDH = OV5640_ReadReg(OV5640_SENSOR_PIDH);
   OV5640ID->PIDL = OV5640_ReadReg(OV5640_SENSOR_PIDL);
 }
 
 /**
-  * @brief  ÅäÖÃ DCMI/DMA ÒÔ²¶»ñÉãÏñÍ·Êý¾Ý
+  * @brief  ï¿½ï¿½ï¿½ï¿½ DCMI/DMA ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½
   * @param  None
   * @retval None
   */
 void OV5640_Init(void) 
 {
-  /*** ÅäÖÃDCMI½Ó¿Ú ***/
-  /* Ê¹ÄÜDCMIÊ±ÖÓ */
+  /*** ï¿½ï¿½ï¿½ï¿½DCMIï¿½Ó¿ï¿½ ***/
+  /* Ê¹ï¿½ï¿½DCMIÊ±ï¿½ï¿½ */
   __HAL_RCC_DCMI_CLK_ENABLE();
 
-  /* DCMI ÅäÖÃ*/
-  //DCMIÍâÉè¼Ä´æÆ÷»ùµØÖ·
+  /* DCMI ï¿½ï¿½ï¿½ï¿½*/
+  //DCMIï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
   DCMI_Handle.Instance              = DCMI;    
-  //Á¬Ðø²É¼¯Ä£Ê½  
+  //ï¿½ï¿½ï¿½ï¿½ï¿½É¼ï¿½Ä£Ê½  
   DCMI_Handle.Init.SynchroMode      = DCMI_MODE_CONTINUOUS;
-  //Á¬Ðø²É¼¯Ä£Ê½  
+  //ï¿½ï¿½ï¿½ï¿½ï¿½É¼ï¿½Ä£Ê½  
   DCMI_Handle.Init.SynchroMode      = DCMI_SYNCHRO_HARDWARE;
-  //ÏñËØÊ±ÖÓÉÏÉýÑØÓÐÐ§  
+  //ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§  
   DCMI_Handle.Init.PCKPolarity      = DCMI_PCKPOLARITY_RISING;
-  //VSP¸ßµçÆ½ÓÐÐ§  
+  //VSPï¿½ßµï¿½Æ½ï¿½ï¿½Ð§  
   DCMI_Handle.Init.VSPolarity       = DCMI_VSPOLARITY_HIGH;
-  //HSPµÍµçÆ½ÓÐÐ§    
+  //HSPï¿½Íµï¿½Æ½ï¿½ï¿½Ð§    
   DCMI_Handle.Init.HSPolarity       = DCMI_HSPOLARITY_LOW;
-  //È«²É¼¯  
+  //È«ï¿½É¼ï¿½  
   DCMI_Handle.Init.CaptureRate      = DCMI_CR_ALL_FRAME;
-  //8Î»Êý¾Ý¿í¶È  
+  //8Î»ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½  
   DCMI_Handle.Init.ExtendedDataMode = DCMI_EXTEND_DATA_8B;
   HAL_DCMI_Init(&DCMI_Handle); 	
     
-	/* ÅäÖÃÖÐ¶Ï */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ */
   HAL_NVIC_SetPriority(DCMI_IRQn, 0, 5);
   HAL_NVIC_EnableIRQ(DCMI_IRQn); 	
-  //dma_memory ÒÔ16Î»Êý¾ÝÎªµ¥Î»£¬ dma_bufsizeÒÔ32Î»Êý¾ÝÎªµ¥Î»(¼´ÏñËØ¸öÊý/2)
+  //dma_memory ï¿½ï¿½16Î»ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Î»ï¿½ï¿½ dma_bufsizeï¿½ï¿½32Î»ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Î»(ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½/2)
   OV5640_DMA_Config(LCD_FB_START_ADDRESS,LCD_GetXSize()*LCD_GetYSize()/2);	
 }
 
 
 /**
-  * @brief  ÅäÖÃ DCMI/DMA ÒÔ²¶»ñÉãÏñÍ·Êý¾Ý
-	* @param  DMA_Memory0BaseAddr:±¾´Î´«ÊäµÄÄ¿µÄÊ×µØÖ·
-  * @param DMA_BufferSize£º±¾´Î´«ÊäµÄÊý¾ÝÁ¿(µ¥Î»Îª×Ö,¼´4×Ö½Ú)
+  * @brief  ï¿½ï¿½ï¿½ï¿½ DCMI/DMA ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½
+	* @param  DMA_Memory0BaseAddr:ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½×µï¿½Ö·
+  * @param DMA_BufferSizeï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Î»Îªï¿½ï¿½,ï¿½ï¿½4ï¿½Ö½ï¿½)
   */
 void OV5640_DMA_Config(uint32_t DMA_Memory0BaseAddr,uint32_t DMA_BufferSize)
 {
-  /* ÅäÖÃDMA´ÓDCMIÖÐ»ñÈ¡Êý¾Ý*/
-  /* Ê¹ÄÜDMA*/
+  /* ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½DCMIï¿½Ð»ï¿½È¡ï¿½ï¿½ï¿½ï¿½*/
+  /* Ê¹ï¿½ï¿½DMA*/
   __HAL_RCC_DMA2_CLK_ENABLE(); 
   DMA_Handle_dcmi.Instance = DMA2_Stream1;
   DMA_Handle_dcmi.Init.Request = DMA_REQUEST_DCMI; 
   DMA_Handle_dcmi.Init.Direction = DMA_PERIPH_TO_MEMORY;
   DMA_Handle_dcmi.Init.PeriphInc = DMA_PINC_DISABLE;
-  DMA_Handle_dcmi.Init.MemInc = DMA_MINC_ENABLE;    //¼Ä´æÆ÷µØÖ·×ÔÔö
+  DMA_Handle_dcmi.Init.MemInc = DMA_MINC_ENABLE;    //ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½
   DMA_Handle_dcmi.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
   DMA_Handle_dcmi.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
-  DMA_Handle_dcmi.Init.Mode = DMA_CIRCULAR;		    //Ñ­»·Ä£Ê½
+  DMA_Handle_dcmi.Init.Mode = DMA_CIRCULAR;		    //Ñ­ï¿½ï¿½Ä£Ê½
   DMA_Handle_dcmi.Init.Priority = DMA_PRIORITY_HIGH;
   DMA_Handle_dcmi.Init.FIFOMode = DMA_FIFOMODE_ENABLE;
   DMA_Handle_dcmi.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
   DMA_Handle_dcmi.Init.MemBurst = DMA_MBURST_INC4;
   DMA_Handle_dcmi.Init.PeriphBurst = DMA_PBURST_SINGLE;
 
-  /*DMAÖÐ¶ÏÅäÖÃ */
+  /*DMAï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ */
   __HAL_LINKDMA(&DCMI_Handle, DMA_Handle, DMA_Handle_dcmi);
   
   HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, 0, 0);
@@ -1015,7 +1015,7 @@ void OV5640_DMA_Config(uint32_t DMA_Memory0BaseAddr,uint32_t DMA_BufferSize)
   
   HAL_DMA_Init(&DMA_Handle_dcmi);
   
-  //Ê¹ÄÜDCMI²É¼¯Êý¾Ý
+  //Ê¹ï¿½ï¿½DCMIï¿½É¼ï¿½ï¿½ï¿½ï¿½ï¿½
   HAL_DCMI_Start_DMA(&DCMI_Handle, DCMI_MODE_CONTINUOUS, (uint32_t)DMA_Memory0BaseAddr,DMA_BufferSize);
 
 }
@@ -1031,9 +1031,9 @@ void OV5640_RGB565Config(void)
 {
   uint32_t i;
   
-	/*ÉãÏñÍ·¸´Î»*/
+	/*ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½Î»*/
   OV5640_Reset();
-  /* Ð´Èë¼Ä´æÆ÷ÅäÖÃ */
+  /* Ð´ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
   /* Initialize OV5640   Set to output RGB565 */
   for(i=0; i<(sizeof(RGB565_Init)/4); i++)
   {
@@ -1111,7 +1111,7 @@ extern uint8_t fps;
   */
 void HAL_DCMI_VsyncEventCallback(DCMI_HandleTypeDef *hdcmi)
 {
-    fps++; //Ö¡ÂÊ¼ÆÊý
+    fps++; //Ö¡ï¿½Ê¼ï¿½ï¿½ï¿½
     OV5640_DMA_Config(LCD_FB_START_ADDRESS,LCD_GetXSize()*LCD_GetYSize()/2);
 }
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

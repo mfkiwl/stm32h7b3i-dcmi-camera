@@ -4,21 +4,21 @@
   * @author  fire
   * @version V1.0
   * @date    2016-xx-xx
-  * @brief   OV2640ÉãÏñÍ·Çý¶¯
+  * @brief   OV2640ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½
   ******************************************************************************
   * @attention
   *
-  * ÊµÑéÆ½Ì¨:±ü»ð  STM32 F767 ¿ª·¢°å  
-  * ÂÛÌ³    :http://www.firebbs.cn
-  * ÌÔ±¦    :http://firestm32.taobao.com
+  * Êµï¿½ï¿½Æ½Ì¨:ï¿½ï¿½ï¿½ï¿½  STM32 F767 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
+  * ï¿½ï¿½Ì³    :http://www.firebbs.cn
+  * ï¿½Ô±ï¿½    :http://firestm32.taobao.com
   *
   ******************************************************************************
   */
   
 
 /* Includes ------------------------------------------------------------------*/
-#include "./camera/bsp_ov2640.h"
-#include "./i2c/bsp_i2c.h"
+#include "bsp_ov2640.h"
+#include "../i2c/bsp_i2c.h"
 
 /** @addtogroup DCMI_Camera
   * @{
@@ -360,8 +360,8 @@ const char OV2640_QQVGA[][2]=
   0x7d, 0x00,
 };
 
-/* OV2640µÄ SVGAÊÇ 600ÁÐ*800ÐÐµÄ£¬ÔÚ800ÁÐ*480ÐÐµÄÒº¾§ÆÁÉÏ²»ÄÜÈ«ÆÁ*/
-/* ËùÒÔÖ±½ÓÓÃ UXGA Ä£Ê½£¬ÔÙ¸ù¾ÝËùÐèµÄÍ¼Ïñ´°¿Ú²Ã¼ô */
+/* OV2640ï¿½ï¿½ SVGAï¿½ï¿½ 600ï¿½ï¿½*800ï¿½ÐµÄ£ï¿½ï¿½ï¿½800ï¿½ï¿½*480ï¿½Ðµï¿½Òºï¿½ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½È«ï¿½ï¿½*/
+/* ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ UXGA Ä£Ê½ï¿½ï¿½ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ñ´°¿Ú²Ã¼ï¿½ */
 const unsigned char OV2640_UXGA[][2]=
 {
   0xff, 0x00,
@@ -371,7 +371,7 @@ const unsigned char OV2640_UXGA[][2]=
   0x3c, 0x32,
   0x11, 0x00,
   0x09, 0x02,
-  0x04, 0xd0,	//Ë®Æ½·­×ª
+  0x04, 0xd0,	//Ë®Æ½ï¿½ï¿½×ª
   0x13, 0xe5,
   0x14, 0x48,
   0x2c, 0x0c,
@@ -592,13 +592,13 @@ const unsigned char OV2640_UXGA[][2]=
 //  0x2b, 0x00,
 //  0x46, 0x87,
 //  0x47, 0x00,
-//  0x3d, 0x33,//Ö¡ÂÊÏà¹Ø£¬¸ú0x11×éºÏ
+//  0x3d, 0x33,//Ö¡ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½0x11ï¿½ï¿½ï¿½
 //  0xff, 0x00,
 //  0xe0, 0x04,
 //  0xc0, 0xc8,
 //  0xc1, 0x96,
 //  0x86, 0x35,
-//  0x50, 0x80,//±ØÐëÅäÖÃÕâ¸ö¼Ä´æÆ÷¿ØÖÆÊ±ÖÓ
+//  0x50, 0x80,//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 //  0x51, 0x90,
 //  0x52, 0x2c,
 //  0x53, 0x00,
@@ -1009,7 +1009,7 @@ const unsigned char OV2640_352x288_JPEG[][2]=
 };
 
 /**
-  * @brief  ³õÊ¼»¯¿ØÖÆÉãÏñÍ·Ê¹ÓÃµÄGPIO(I2C/DCMI)
+  * @brief  ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·Ê¹ï¿½Ãµï¿½GPIO(I2C/DCMI)
   * @param  None
   * @retval None
   */
@@ -1017,8 +1017,8 @@ void OV2640_HW_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
     
-    /***DCMIÒý½ÅÅäÖÃ***/
-    /* Ê¹ÄÜDCMIÊ±ÖÓ */
+    /***DCMIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½***/
+    /* Ê¹ï¿½ï¿½DCMIÊ±ï¿½ï¿½ */
     DCMI_PWDN_GPIO_CLK_ENABLE();
     DCMI_VSYNC_GPIO_CLK_ENABLE();
     DCMI_HSYNC_GPIO_CLK_ENABLE();
@@ -1032,7 +1032,7 @@ void OV2640_HW_Init(void)
     DCMI_D6_GPIO_CLK_ENABLE();
     DCMI_D7_GPIO_CLK_ENABLE();
 
-    /*¿ØÖÆ/Í¬²½ÐÅºÅÏß*/
+    /*ï¿½ï¿½ï¿½ï¿½/Í¬ï¿½ï¿½ï¿½Åºï¿½ï¿½ï¿½*/
     GPIO_InitStructure.Pin = DCMI_VSYNC_GPIO_PIN;
     GPIO_InitStructure.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -1049,7 +1049,7 @@ void OV2640_HW_Init(void)
     GPIO_InitStructure.Alternate = DCMI_PIXCLK_AF;
     HAL_GPIO_Init(DCMI_PIXCLK_GPIO_PORT, &GPIO_InitStructure);
     
-    /*Êý¾ÝÐÅºÅ*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½*/
     GPIO_InitStructure.Pin = DCMI_D0_GPIO_PIN;
     GPIO_InitStructure.Alternate = DCMI_D0_AF;
     HAL_GPIO_Init(DCMI_D0_GPIO_PORT, &GPIO_InitStructure);
@@ -1085,7 +1085,7 @@ void OV2640_HW_Init(void)
     GPIO_InitStructure.Pin = DCMI_PWDN_GPIO_PIN;
     GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP;    
     HAL_GPIO_Init(DCMI_PWDN_GPIO_PORT, &GPIO_InitStructure);
-    /*PWDNÒý½Å£¬¸ßµçÆ½¹Ø±ÕµçÔ´£¬µÍµçÆ½¹©µç*/
+    /*PWDNï¿½ï¿½ï¿½Å£ï¿½ï¿½ßµï¿½Æ½ï¿½Ø±Õµï¿½Ô´ï¿½ï¿½ï¿½Íµï¿½Æ½ï¿½ï¿½ï¿½ï¿½*/
     HAL_GPIO_WritePin(DCMI_PWDN_GPIO_PORT,DCMI_PWDN_GPIO_PIN,GPIO_PIN_RESET);
     
 }
@@ -1096,22 +1096,22 @@ void OV2640_HW_Init(void)
   */
 void OV2640_Reset(void)
 {
-	/*OV2640ÓÐÁ½×é¼Ä´æÆ÷£¬ÉèÖÃ0xFF¼Ä´æÆ÷µÄÖµÎª0»òÎª1Ê±¿ÉÑ¡ÔñÊ¹ÓÃ²»Í¬×éµÄ¼Ä´æÆ÷*/
+	/*OV2640ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0xFFï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÎª0ï¿½ï¿½Îª1Ê±ï¿½ï¿½Ñ¡ï¿½ï¿½Ê¹ï¿½Ã²ï¿½Í¬ï¿½ï¿½Ä¼Ä´ï¿½ï¿½ï¿½*/
   OV2640_WriteReg(OV2640_DSP_RA_DLMT, 0x01);
   OV2640_WriteReg(OV2640_SENSOR_COM7, 0x80);
 }
 
 /**
-  * @brief  ¶ÁÈ¡ÉãÏñÍ·µÄID.
-  * @param  OV2640ID: ´æ´¢IDµÄ½á¹¹Ìå
+  * @brief  ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ID.
+  * @param  OV2640ID: ï¿½æ´¢IDï¿½Ä½á¹¹ï¿½ï¿½
   * @retval None
   */
 void OV2640_ReadID(OV2640_IDTypeDef *OV2640ID)
 {
-	/*OV2640ÓÐÁ½×é¼Ä´æÆ÷£¬ÉèÖÃ0xFF¼Ä´æÆ÷µÄÖµÎª0»òÎª1Ê±¿ÉÑ¡ÔñÊ¹ÓÃ²»Í¬×éµÄ¼Ä´æÆ÷*/
+	/*OV2640ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0xFFï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÎª0ï¿½ï¿½Îª1Ê±ï¿½ï¿½Ñ¡ï¿½ï¿½Ê¹ï¿½Ã²ï¿½Í¬ï¿½ï¿½Ä¼Ä´ï¿½ï¿½ï¿½*/
   OV2640_WriteReg(OV2640_DSP_RA_DLMT, 0x01);
 	
-	/*¶ÁÈ¡¼Ä´æÐ¾Æ¬ID*/
+	/*ï¿½ï¿½È¡ï¿½Ä´ï¿½Ð¾Æ¬ID*/
   OV2640ID->Manufacturer_ID1 = OV2640_ReadReg(OV2640_SENSOR_MIDH);
   OV2640ID->Manufacturer_ID2 = OV2640_ReadReg(OV2640_SENSOR_MIDL);
   OV2640ID->PIDH = OV2640_ReadReg(OV2640_SENSOR_PIDH);
@@ -1121,17 +1121,17 @@ void OV2640_ReadID(OV2640_IDTypeDef *OV2640ID)
 
 
 /**
-  * @brief  ÅäÖÃ DCMI/DMA ÒÔ²¶»ñÉãÏñÍ·Êý¾Ý
+  * @brief  ï¿½ï¿½ï¿½ï¿½ DCMI/DMA ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½
   * @param  None
   * @retval None
   */
 void OV2640_Init(void) 
 {
-	/*** ÅäÖÃDCMI½Ó¿Ú ***/
-	/* Ê¹ÄÜDCMIÊ±ÖÓ */
+	/*** ï¿½ï¿½ï¿½ï¿½DCMIï¿½Ó¿ï¿½ ***/
+	/* Ê¹ï¿½ï¿½DCMIÊ±ï¿½ï¿½ */
 	__HAL_RCC_DCMI_CLK_ENABLE();
 
-	/* DCMI ÅäÖÃ*/
+	/* DCMI ï¿½ï¿½ï¿½ï¿½*/
 	DCMI_Handle.Instance              = DCMI;    
 	DCMI_Handle.Init.SynchroMode      = DCMI_MODE_CONTINUOUS;
 	DCMI_Handle.Init.SynchroMode      = DCMI_SYNCHRO_HARDWARE;
@@ -1142,32 +1142,32 @@ void OV2640_Init(void)
 	DCMI_Handle.Init.ExtendedDataMode = DCMI_EXTEND_DATA_8B;
 	HAL_DCMI_Init(&DCMI_Handle); 	
 
-	/* ÅäÖÃÖÐ¶Ï */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ */
 	HAL_NVIC_SetPriority(DCMI_IRQn, 0 ,5);
 	HAL_NVIC_EnableIRQ(DCMI_IRQn); 	
 
-	//¿ªÊ¼´«Êä£¬Êý¾Ý´óÐ¡ÒÔ32Î»Êý¾ÝÎªµ¥Î»(¼´ÏñËØ¸öÊý/4£¬LCD_GetXSize()*LCD_GetYSize()*2/4) 
+	//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ä£¬ï¿½ï¿½ï¿½Ý´ï¿½Ð¡ï¿½ï¿½32Î»ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Î»(ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½/4ï¿½ï¿½LCD_GetXSize()*LCD_GetYSize()*2/4) 
 	OV2640_DMA_Config(LCD_FB_START_ADDRESS, LCD_GetXSize()*LCD_GetYSize()/2);
 }
 
 /**
-  * @brief  ÅäÖÃ DCMI/DMA ÒÔ²¶»ñÉãÏñÍ·Êý¾Ý
-  * @param  DMA_Memory0BaseAddr:±¾´Î´«ÊäµÄÄ¿µÄÊ×µØÖ·
-  * @param DMA_BufferSize£º±¾´Î´«ÊäµÄÊý¾ÝÁ¿(µ¥Î»Îª×Ö,¼´4×Ö½Ú)
+  * @brief  ï¿½ï¿½ï¿½ï¿½ DCMI/DMA ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½
+  * @param  DMA_Memory0BaseAddr:ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½×µï¿½Ö·
+  * @param DMA_BufferSizeï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Î»Îªï¿½ï¿½,ï¿½ï¿½4ï¿½Ö½ï¿½)
   */
 void OV2640_DMA_Config(uint32_t DMA_Memory0BaseAddr,uint32_t DMA_BufferSize)
 {
-  /* ÅäÖÃDMA´ÓDCMIÖÐ»ñÈ¡Êý¾Ý*/
-  /* Ê¹ÄÜDMA*/
+  /* ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½DCMIï¿½Ð»ï¿½È¡ï¿½ï¿½ï¿½ï¿½*/
+  /* Ê¹ï¿½ï¿½DMA*/
   __HAL_RCC_DMA2_CLK_ENABLE(); 
   DMA_Handle_dcmi.Instance = DMA2_Stream1;
   DMA_Handle_dcmi.Init.Request = DMA_REQUEST_DCMI;
   DMA_Handle_dcmi.Init.Direction = DMA_PERIPH_TO_MEMORY;
   DMA_Handle_dcmi.Init.PeriphInc = DMA_PINC_DISABLE;
-  DMA_Handle_dcmi.Init.MemInc = DMA_MINC_ENABLE;			//¼Ä´æÆ÷µØÖ·×ÔÔö
+  DMA_Handle_dcmi.Init.MemInc = DMA_MINC_ENABLE;			//ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½
   DMA_Handle_dcmi.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
   DMA_Handle_dcmi.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
-  DMA_Handle_dcmi.Init.Mode = DMA_CIRCULAR;								//Ñ­»·Ä£Ê½
+  DMA_Handle_dcmi.Init.Mode = DMA_CIRCULAR;								//Ñ­ï¿½ï¿½Ä£Ê½
   DMA_Handle_dcmi.Init.Priority = DMA_PRIORITY_VERY_HIGH;
   DMA_Handle_dcmi.Init.FIFOMode = DMA_FIFOMODE_ENABLE;
   DMA_Handle_dcmi.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
@@ -1175,13 +1175,13 @@ void OV2640_DMA_Config(uint32_t DMA_Memory0BaseAddr,uint32_t DMA_BufferSize)
   DMA_Handle_dcmi.Init.PeriphBurst = DMA_PBURST_SINGLE;
 	
 	HAL_DMA_Init(&DMA_Handle_dcmi);
-  /*DMAÖÐ¶ÏÅäÖÃ */
+  /*DMAï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ */
   __HAL_LINKDMA(&DCMI_Handle, DMA_Handle, DMA_Handle_dcmi);
   
   HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream1_IRQn);
 
-  //Ê¹ÄÜDCMI²É¼¯Êý¾Ý
+  //Ê¹ï¿½ï¿½DCMIï¿½É¼ï¿½ï¿½ï¿½ï¿½ï¿½
   HAL_DCMI_Start_DMA(&DCMI_Handle, DCMI_MODE_CONTINUOUS, (uint32_t)DMA_Memory0BaseAddr,DMA_BufferSize);
 }
 
@@ -1206,9 +1206,9 @@ void OV2640_QQVGAConfig(void)
 }
 
 /**
-  * @brief  ÉèÖÃÍ¼ÏñÊä³ö´óÐ¡£¬OV2640Êä³öÍ¼ÏñµÄ´óÐ¡(·Ö±æÂÊ),ÍêÈ«ÓÉ¸Ãº¯ÊýÈ·¶¨
-  * @param  width,height:¿í¶È(¶ÔÓ¦:horizontal)ºÍ¸ß¶È(¶ÔÓ¦:vertical),widthºÍheight±ØÐëÊÇ4µÄ±¶Êý
-  * @retval 0,ÉèÖÃ³É¹¦£¬ÆäËû,ÉèÖÃÊ§°Ü
+  * @brief  ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½OV2640ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ä´ï¿½Ð¡(ï¿½Ö±ï¿½ï¿½ï¿½),ï¿½ï¿½È«ï¿½É¸Ãºï¿½ï¿½ï¿½È·ï¿½ï¿½
+  * @param  width,height:ï¿½ï¿½ï¿½(ï¿½ï¿½Ó¦:horizontal)ï¿½Í¸ß¶ï¿½(ï¿½ï¿½Ó¦:vertical),widthï¿½ï¿½heightï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4ï¿½Ä±ï¿½ï¿½ï¿½
+  * @retval 0,ï¿½ï¿½ï¿½Ã³É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
   */
 u8 OV2640_OutSize_Set(u16 width,u16 height)
 {
@@ -1221,29 +1221,29 @@ u8 OV2640_OutSize_Set(u16 width,u16 height)
 	outh=height/4; 
 	OV2640_WriteReg(0XFF,0X00);	
 	OV2640_WriteReg(0XE0,0X04);	
-    OV2640_WriteReg(0X50,outw&0X00);		//ÅäÖÃv_divider hdivider
-	OV2640_WriteReg(0X5A,outw&0XFF);		//ÉèÖÃOUTWµÄµÍ°ËÎ»
-	OV2640_WriteReg(0X5B,outh&0XFF);		//ÉèÖÃOUTHµÄµÍ°ËÎ»
+    OV2640_WriteReg(0X50,outw&0X00);		//ï¿½ï¿½ï¿½ï¿½v_divider hdivider
+	OV2640_WriteReg(0X5A,outw&0XFF);		//ï¿½ï¿½ï¿½ï¿½OUTWï¿½ÄµÍ°ï¿½Î»
+	OV2640_WriteReg(0X5B,outh&0XFF);		//ï¿½ï¿½ï¿½ï¿½OUTHï¿½ÄµÍ°ï¿½Î»
 	temp=(outw>>8)&0X03;
 	temp|=(outh>>6)&0X04;
-	OV2640_WriteReg(0X5C,temp);				//ÉèÖÃOUTH/OUTWµÄ¸ßÎ» 
+	OV2640_WriteReg(0X5C,temp);				//ï¿½ï¿½ï¿½ï¿½OUTH/OUTWï¿½Ä¸ï¿½Î» 
 	OV2640_WriteReg(0XE0,0X00);	
 	return 0;
 }
 
-/**Î´²âÊÔ*/
+/**Î´ï¿½ï¿½ï¿½ï¿½*/
 /**
-  * @brief  ÉèÖÃÍ¼Ïñ³ß´ç´óÐ¡,Ò²¾ÍÊÇËùÑ¡¸ñÊ½µÄÊä³ö·Ö±æÂÊ
-  * @param  width,height:Í¼Ïñ¿í¶ÈºÍÍ¼Ïñ¸ß¶È
-  * @retval 0,ÉèÖÃ³É¹¦£¬ÆäËû,ÉèÖÃÊ§°Ü
+  * @brief  ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ß´ï¿½ï¿½Ð¡,Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½
+  * @param  width,height:Í¼ï¿½ï¿½ï¿½Èºï¿½Í¼ï¿½ï¿½ß¶ï¿½
+  * @retval 0,ï¿½ï¿½ï¿½Ã³É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
   */
 u8 OV2640_ImageSize_Set(u16 width,u16 height)
 {
 	u8 temp;
 	OV2640_WriteReg(0XFF,0X00);
 	OV2640_WriteReg(0XE0,0X04);
-	OV2640_WriteReg(0XC0,(width)>>3&0XFF);		//ÉèÖÃHSIZEµÄ10:3Î»
-	OV2640_WriteReg(0XC1,(height)>>3&0XFF);		//ÉèÖÃVSIZEµÄ10:3Î»
+	OV2640_WriteReg(0XC0,(width)>>3&0XFF);		//ï¿½ï¿½ï¿½ï¿½HSIZEï¿½ï¿½10:3Î»
+	OV2640_WriteReg(0XC1,(height)>>3&0XFF);		//ï¿½ï¿½ï¿½ï¿½VSIZEï¿½ï¿½10:3Î»
 	temp=(width&0X07)<<3;
 	temp|=height&0X07;
 	temp|=(width>>4)&0X80;
@@ -1253,12 +1253,12 @@ u8 OV2640_ImageSize_Set(u16 width,u16 height)
 }
 
 
-/**Î´²âÊÔ*/
+/**Î´ï¿½ï¿½ï¿½ï¿½*/
 /**
-  * @brief  ÉèÖÃÍ¼ÏñÊä³ö´°¿Ú
-  * @param  sx,sy,ÆðÊ¼µØÖ·
-						width,height:¿í¶È(¶ÔÓ¦:horizontal)ºÍ¸ß¶È(¶ÔÓ¦:vertical)
-  * @retval 0,ÉèÖÃ³É¹¦£¬ ÆäËû,ÉèÖÃÊ§°Ü
+  * @brief  ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  * @param  sx,sy,ï¿½ï¿½Ê¼ï¿½ï¿½Ö·
+						width,height:ï¿½ï¿½ï¿½(ï¿½ï¿½Ó¦:horizontal)ï¿½Í¸ß¶ï¿½(ï¿½ï¿½Ó¦:vertical)
+  * @retval 0,ï¿½ï¿½ï¿½Ã³É¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
   */
 void OV2640_Window_Set(u16 sx,u16 sy,u16 width,u16 height)
 {
@@ -1269,31 +1269,31 @@ void OV2640_Window_Set(u16 sx,u16 sy,u16 width,u16 height)
  	endy=sy+height/2;
 
  	OV2640_WriteReg(0XFF,0X01);
-	temp = OV2640_ReadReg(0X03);				//¶ÁÈ¡VrefÖ®Ç°µÄÖµ
+	temp = OV2640_ReadReg(0X03);				//ï¿½ï¿½È¡VrefÖ®Ç°ï¿½ï¿½Öµ
 	temp&=0XF0;
 	temp|=((endy&0X03)<<2)|(sy&0X03);
-	OV2640_WriteReg(0X03,temp);				//ÉèÖÃVrefµÄstartºÍendµÄ×îµÍ2Î»
-	OV2640_WriteReg(0X19,sy>>2);			//ÉèÖÃVrefµÄstart¸ß8Î»
-	OV2640_WriteReg(0X1A,endy>>2);			//ÉèÖÃVrefµÄendµÄ¸ß8Î»
+	OV2640_WriteReg(0X03,temp);				//ï¿½ï¿½ï¿½ï¿½Vrefï¿½ï¿½startï¿½ï¿½endï¿½ï¿½ï¿½ï¿½ï¿½2Î»
+	OV2640_WriteReg(0X19,sy>>2);			//ï¿½ï¿½ï¿½ï¿½Vrefï¿½ï¿½startï¿½ï¿½8Î»
+	OV2640_WriteReg(0X1A,endy>>2);			//ï¿½ï¿½ï¿½ï¿½Vrefï¿½ï¿½endï¿½Ä¸ï¿½8Î»
 
-	temp = OV2640_ReadReg(0X32);				//¶ÁÈ¡HrefÖ®Ç°µÄÖµ
+	temp = OV2640_ReadReg(0X32);				//ï¿½ï¿½È¡HrefÖ®Ç°ï¿½ï¿½Öµ
 	temp&=0XC0;
 	temp|=((endx&0X07)<<3)|(sx&0X07);
-	OV2640_WriteReg(0X32,temp);				//ÉèÖÃHrefµÄstartºÍendµÄ×îµÍ3Î»
-	OV2640_WriteReg(0X17,sx>>3);			//ÉèÖÃHrefµÄstart¸ß8Î»
-	OV2640_WriteReg(0X18,endx>>3);			//ÉèÖÃHrefµÄendµÄ¸ß8Î»
+	OV2640_WriteReg(0X32,temp);				//ï¿½ï¿½ï¿½ï¿½Hrefï¿½ï¿½startï¿½ï¿½endï¿½ï¿½ï¿½ï¿½ï¿½3Î»
+	OV2640_WriteReg(0X17,sx>>3);			//ï¿½ï¿½ï¿½ï¿½Hrefï¿½ï¿½startï¿½ï¿½8Î»
+	OV2640_WriteReg(0X18,endx>>3);			//ï¿½ï¿½ï¿½ï¿½Hrefï¿½ï¿½endï¿½Ä¸ï¿½8Î»
 }
 
-//Î´²âÊÔ
+//Î´ï¿½ï¿½ï¿½ï¿½
 /**
-  * @brief  ÉèÖÃÍ¼Ïñ¿ª´°´óÐ¡
-						ÓÉ:OV2640_ImageSize_SetÈ·¶¨´«¸ÐÆ÷Êä³ö·Ö±æÂÊ´Ó´óÐ¡.
-						¸Ãº¯ÊýÔòÔÚÕâ¸ö·¶Î§ÉÏÃæ½øÐÐ¿ª´°,ÓÃÓÚOV2640_OutSize_SetµÄÊä³ö
-						×¢Òâ:±¾º¯ÊýµÄ¿í¶ÈºÍ¸ß¶È,±ØÐë´óÓÚµÈÓÚOV2640_OutSize_Setº¯ÊýµÄ¿í¶ÈºÍ¸ß¶È
-						     OV2640_OutSize_SetÉèÖÃµÄ¿í¶ÈºÍ¸ß¶È,¸ù¾Ý±¾º¯ÊýÉèÖÃµÄ¿í¶ÈºÍ¸ß¶È,ÓÉDSP
-						     ×Ô¶¯¼ÆËãËõ·Å±ÈÀý,Êä³ö¸øÍâ²¿Éè±¸.
-  * @param  width,height:¿í¶È(¶ÔÓ¦:horizontal)ºÍ¸ß¶È(¶ÔÓ¦:vertical),widthºÍheight±ØÐëÊÇ4µÄ±¶Êý
-  * @retval 0,ÉèÖÃ³É¹¦£¬ ÆäËû,ÉèÖÃÊ§°Ü
+  * @brief  ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ñ¿ª´ï¿½ï¿½ï¿½Ð¡
+						ï¿½ï¿½:OV2640_ImageSize_SetÈ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ê´Ó´ï¿½Ð¡.
+						ï¿½Ãºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½OV2640_OutSize_Setï¿½ï¿½ï¿½ï¿½ï¿½
+						×¢ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ÈºÍ¸ß¶ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½OV2640_OutSize_Setï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ÈºÍ¸ß¶ï¿½
+						     OV2640_OutSize_Setï¿½ï¿½ï¿½ÃµÄ¿ï¿½ÈºÍ¸ß¶ï¿½,ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ¿ï¿½ÈºÍ¸ß¶ï¿½,ï¿½ï¿½DSP
+						     ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½è±¸.
+  * @param  width,height:ï¿½ï¿½ï¿½(ï¿½ï¿½Ó¦:horizontal)ï¿½Í¸ß¶ï¿½(ï¿½ï¿½Ó¦:vertical),widthï¿½ï¿½heightï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4ï¿½Ä±ï¿½ï¿½ï¿½
+  * @retval 0,ï¿½ï¿½ï¿½Ã³É¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
   */
 u8 OV2640_ImageWin_Set(u16 offx,u16 offy,u16 width,u16 height)
 {
@@ -1306,22 +1306,22 @@ u8 OV2640_ImageWin_Set(u16 offx,u16 offy,u16 width,u16 height)
 	vsize=height/4;
 	OV2640_WriteReg(0XFF,0X00);
 	OV2640_WriteReg(0XE0,0X04);
-	OV2640_WriteReg(0X51,hsize&0XFF);		//ÉèÖÃH_SIZEµÄµÍ°ËÎ»
-	OV2640_WriteReg(0X52,vsize&0XFF);		//ÉèÖÃV_SIZEµÄµÍ°ËÎ»
-	OV2640_WriteReg(0X53,offx&0XFF);		//ÉèÖÃoffxµÄµÍ°ËÎ»
-	OV2640_WriteReg(0X54,offy&0XFF);		//ÉèÖÃoffyµÄµÍ°ËÎ»
+	OV2640_WriteReg(0X51,hsize&0XFF);		//ï¿½ï¿½ï¿½ï¿½H_SIZEï¿½ÄµÍ°ï¿½Î»
+	OV2640_WriteReg(0X52,vsize&0XFF);		//ï¿½ï¿½ï¿½ï¿½V_SIZEï¿½ÄµÍ°ï¿½Î»
+	OV2640_WriteReg(0X53,offx&0XFF);		//ï¿½ï¿½ï¿½ï¿½offxï¿½ÄµÍ°ï¿½Î»
+	OV2640_WriteReg(0X54,offy&0XFF);		//ï¿½ï¿½ï¿½ï¿½offyï¿½ÄµÍ°ï¿½Î»
 	temp=(vsize>>1)&0X80;
 	temp|=(offy>>4)&0X70;
 	temp|=(hsize>>5)&0X08;
 	temp|=(offx>>8)&0X07;
-	OV2640_WriteReg(0X55,temp);				//ÉèÖÃH_SIZE/V_SIZE/OFFX,OFFYµÄ¸ßÎ»
-	OV2640_WriteReg(0X57,(hsize>>2)&0X80);	//ÉèÖÃH_SIZE/V_SIZE/OFFX,OFFYµÄ¸ßÎ»
+	OV2640_WriteReg(0X55,temp);				//ï¿½ï¿½ï¿½ï¿½H_SIZE/V_SIZE/OFFX,OFFYï¿½Ä¸ï¿½Î»
+	OV2640_WriteReg(0X57,(hsize>>2)&0X80);	//ï¿½ï¿½ï¿½ï¿½H_SIZE/V_SIZE/OFFX,OFFYï¿½Ä¸ï¿½Î»
 	OV2640_WriteReg(0XE0,0X00);
 	return 0;
 }
 
 /**
-  * @brief  ÅäÖÃOV2640ÎªUXGAÄ£Ê½£¬²¢ÉèÖÃÊä³öÍ¼Ïñ´óÐ¡
+  * @brief  ï¿½ï¿½ï¿½ï¿½OV2640ÎªUXGAÄ£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Ð¡
   * @param  None
   * @retval None
   */
@@ -1329,12 +1329,12 @@ void OV2640_UXGAConfig(void)
 {
   uint32_t i;
 	
-	/*ÉãÏñÍ·¸´Î»*/
+	/*ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½Î»*/
   OV2640_Reset();
 
-	/*½øÐÐÈý´Î¼Ä´æÆ÷Ð´Èë£¬È·±£ÅäÖÃÐ´ÈëÕý³£
-	(ÔÚÊ¹ÓÃÉãÏñÍ·³¤ÅÅÏßÊ±£¬IICÊý¾ÝÏß¸ÉÈÅ½Ï´ó£¬±ØÐë¶à´ÎÐ´ÈëÀ´±£Ö¤Õý³£)*/
-  /* Ð´Èë¼Ä´æÆ÷ÅäÖÃ */
+	/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¼Ä´ï¿½ï¿½ï¿½Ð´ï¿½ë£¬È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	(ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½IICï¿½ï¿½ï¿½ï¿½ï¿½ß¸ï¿½ï¿½Å½Ï´ó£¬±ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½)*/
+  /* Ð´ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	for(i=0; i<(sizeof(OV2640_UXGA)/2); i++)
 	{
 		OV2640_WriteReg(OV2640_UXGA[i][0], OV2640_UXGA[i][1]);
@@ -1352,7 +1352,7 @@ void OV2640_UXGAConfig(void)
 //		OV2640_WriteReg(OV2640_UXGA[i][0], OV2640_UXGA[i][1]);
 
 //	}	
-	/*ÉèÖÃÊä³öµÄÍ¼Ïñ´óÐ¡*/
+	/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Ð¡*/
 	OV2640_OutSize_Set(img_width,img_height);   
 }
 
@@ -1437,13 +1437,13 @@ void OV2640_JPEGConfig(ImageFormat_TypeDef ImageFormat)
 }
 
 /**
-  * @brief  ÅäÖÃ¹âÏßÄ£Ê½
-  * @param  ²ÎÊýÓÃÓÚÑ¡Ôñ¹âÏßÄ£Ê½
-  *         0x00 Auto     ×Ô¶¯
-  *         0x01 Sunny    ¹âÕÕ
-  *         0x02 Cloudy   ÒõÌì
-  *         0x03 Office   °ì¹«ÊÒ
-  *         0x04 Home     ¼ÒÀï
+  * @brief  ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½Ä£Ê½
+  * @param  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+  *         0x00 Auto     ï¿½Ô¶ï¿½
+  *         0x01 Sunny    ï¿½ï¿½ï¿½ï¿½
+  *         0x02 Cloudy   ï¿½ï¿½ï¿½ï¿½
+  *         0x03 Office   ï¿½ì¹«ï¿½ï¿½
+  *         0x04 Home     ï¿½ï¿½ï¿½ï¿½
 
   * @retval None
   */
@@ -1494,16 +1494,16 @@ void OV2640_LightMode(uint8_t mode)
 }
 
 /**
-  * @brief  ÌØÊâÐ§¹û
-  * @param  ²ÎÊýÓÃÓÚÑ¡Ôñ¹âÏßÄ£Ê½
-  *         0x00 Antique   ¸´¹Å  
-  *         0x01 Bluish    Æ«À¶
-  *         0x02 Greenish  Æ«ÂÌ 
-  *         0x03 Reddish   Æ«ºì
-  *         0x04 B&W       ºÚ°×
-  *         0x05 Negative  ·´Ïà
-  *         0x06 B&W negative  ºÚ°×·´Ïà
-  *         0x07 Normal     Õý³£ 
+  * @brief  ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
+  * @param  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+  *         0x00 Antique   ï¿½ï¿½ï¿½ï¿½  
+  *         0x01 Bluish    Æ«ï¿½ï¿½
+  *         0x02 Greenish  Æ«ï¿½ï¿½ 
+  *         0x03 Reddish   Æ«ï¿½ï¿½
+  *         0x04 B&W       ï¿½Ú°ï¿½
+  *         0x05 Negative  ï¿½ï¿½ï¿½ï¿½
+  *         0x06 B&W negative  ï¿½Ú°×·ï¿½ï¿½ï¿½
+  *         0x07 Normal     ï¿½ï¿½ï¿½ï¿½ 
 
   * @retval None
   */
@@ -1684,13 +1684,13 @@ void OV2640_ContrastConfig(uint8_t value1, uint8_t value2)
 }
 
 /**
-  * @brief  Ö¡Í¬²½»Øµ÷º¯Êý.
+  * @brief  Ö¡Í¬ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½.
   * @param  None
   * @retval None
   */
 void HAL_DCMI_VsyncEventCallback(DCMI_HandleTypeDef *hdcmi)
 {
-    fps++; //Ö¡ÂÊ¼ÆÊý
+    fps++; //Ö¡ï¿½Ê¼ï¿½ï¿½ï¿½
     OV2640_DMA_Config(LCD_FB_START_ADDRESS,LCD_GetXSize()*LCD_GetYSize()/2); 
 }
 

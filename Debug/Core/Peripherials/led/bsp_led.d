@@ -1,8 +1,5 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
- ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
- ../Core/Inc/stm32h7xx_hal_conf.h \
- ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
- ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h \
+Core/Peripherials/led/bsp_led.o: ../Core/Peripherials/led/bsp_led.c \
+ ../Core/Peripherials/led/bsp_led.h \
  ../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
  ../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7b3xxq.h \
  ../Drivers/CMSIS/Include/core_cm7.h \
@@ -11,6 +8,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/CMSIS/Include/cmsis_gcc.h \
  ../Drivers/CMSIS/Include/mpu_armv7.h \
  ../Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h \
+ ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
+ ../Core/Inc/stm32h7xx_hal_conf.h \
+ ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
+ ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h \
@@ -44,19 +45,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h \
- ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
- C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/stm32h7b3i_eval_camera.h \
- C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/stm32h7b3i_eval_errno.h \
- C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/stm32h7b3i_eval_conf.h \
- C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/ov5640.h \
- C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/ov5640_reg.h \
- ../Drivers/CMSIS/Include/cmsis_compiler.h \
- C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/camera.h
-../Core/Inc/main.h:
-../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
-../Core/Inc/stm32h7xx_hal_conf.h:
-../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h:
-../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h:
+ ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
+../Core/Peripherials/led/bsp_led.h:
 ../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h:
 ../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7b3xxq.h:
 ../Drivers/CMSIS/Include/core_cm7.h:
@@ -65,6 +55,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/CMSIS/Include/cmsis_gcc.h:
 ../Drivers/CMSIS/Include/mpu_armv7.h:
 ../Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h:
+../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
+../Core/Inc/stm32h7xx_hal_conf.h:
+../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h:
+../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h:
@@ -99,10 +93,3 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
-C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/stm32h7b3i_eval_camera.h:
-C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/stm32h7b3i_eval_errno.h:
-C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/stm32h7b3i_eval_conf.h:
-C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/ov5640.h:
-C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/ov5640_reg.h:
-../Drivers/CMSIS/Include/cmsis_compiler.h:
-C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/camera.h:
