@@ -60,7 +60,7 @@ typedef struct
   * @{
   */
 /* Definition for I2C2 clock resources */
-#define BUS_I2C2                              I2C2
+#define BUS_I2C2                              I2C4
 #define BUS_I2C2_CLK_ENABLE()                  __HAL_RCC_I2C2_CLK_ENABLE()
 #define BUS_I2C2_CLK_DISABLE()                 __HAL_RCC_I2C2_CLK_DISABLE()
 #define BUS_I2C2_SCL_GPIO_CLK_ENABLE()         __HAL_RCC_GPIOH_CLK_ENABLE()

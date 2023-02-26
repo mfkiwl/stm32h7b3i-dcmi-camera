@@ -1,4 +1,5 @@
 "./Core/Src/main.o"
+"./Core/Src/retarget.o"
 "./Core/Src/syscalls.o"
 "./Core/Src/sysmem.o"
 "./Core/Src/system_stm32h7xx.o"

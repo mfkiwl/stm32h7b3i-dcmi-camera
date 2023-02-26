@@ -181,7 +181,6 @@ int main(void)
 	  {
 	  }
 
-
 	  /* Stop the camera to avoid having the DMA2D work in parallel of Display */
 	  /* which cause perturbation of LTDC                                      */
 	  BSP_CAMERA_Stop(0);

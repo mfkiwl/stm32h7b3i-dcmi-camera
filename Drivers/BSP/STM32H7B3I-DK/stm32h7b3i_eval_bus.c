@@ -158,7 +158,7 @@ static osSemaphoreId BspI2cSemaphore = 0;
 /** @defgroup STM32H7B3I_EVAL_BUS_Exported_Variables BUS Exported Variables
   * @{
   */
-I2C_HandleTypeDef hbus_i2c2;
+I2C_HandleTypeDef hbus_i2c4;
 /**
   * @}
   */
@@ -188,13 +188,13 @@ int32_t BSP_I2C2_Init(void)
 {
   int32_t ret = BSP_ERROR_NONE;
 
-  hbus_i2c2.Instance = BUS_I2C2;
+  hbus_i2c4.Instance = BUS_I2C2;
 
   if (I2c2InitCounter == 0U)
   {
     I2c2InitCounter++;
 
-    if (HAL_I2C_GetState(&hbus_i2c2) == HAL_I2C_STATE_RESET)
+    if (HAL_I2C_GetState(&hbus_i2c4) == HAL_I2C_STATE_RESET)
     {
 #if defined(BSP_USE_CMSIS_OS)
       if(BspI2cSemaphore == NULL)
@@ -206,7 +206,7 @@ int32_t BSP_I2C2_Init(void)
 #endif
 #if (USE_HAL_I2C_REGISTER_CALLBACKS == 0)
       /* Init the I2C2 Msp */
-      I2C2_MspInit(&hbus_i2c2);
+      I2C2_MspInit(&hbus_i2c4);
 #else
       if (IsI2c2MspCbValid == 0U)
       {
@@ -218,7 +218,7 @@ int32_t BSP_I2C2_Init(void)
       if (ret == BSP_ERROR_NONE)
       {
 #endif
-        if (MX_I2C2_Init(&hbus_i2c2, I2C_GetTiming(HAL_RCC_GetPCLK1Freq(), BUS_I2C2_FREQUENCY)) != HAL_OK)
+        if (MX_I2C2_Init(&hbus_i2c4, I2C_GetTiming(HAL_RCC_GetPCLK1Freq(), BUS_I2C2_FREQUENCY)) != HAL_OK)
         {
           ret = BSP_ERROR_BUS_FAILURE;
         }
@@ -244,11 +244,11 @@ int32_t BSP_I2C2_DeInit(void)
   if (I2c2InitCounter == 0U)
   {
 #if (USE_HAL_I2C_REGISTER_CALLBACKS == 0)
-    I2C2_MspDeInit(&hbus_i2c2);
+    I2C2_MspDeInit(&hbus_i2c4);
 #endif /* (USE_HAL_I2C_REGISTER_CALLBACKS == 0) */
 
     /* Init the I2C */
-    if (HAL_I2C_DeInit(&hbus_i2c2) != HAL_OK)
+    if (HAL_I2C_DeInit(&hbus_i2c4) != HAL_OK)
     {
       ret = BSP_ERROR_BUS_FAILURE;
     }
@@ -323,7 +323,7 @@ int32_t BSP_I2C2_WriteReg(uint16_t DevAddr, uint16_t Reg, uint8_t *pData, uint16
   }
   else
   {
-    if( HAL_I2C_GetError(&hbus_i2c2) == HAL_I2C_ERROR_AF)
+    if( HAL_I2C_GetError(&hbus_i2c4) == HAL_I2C_ERROR_AF)
     {
       ret = BSP_ERROR_BUS_ACKNOWLEDGE_FAILURE;
     }
@@ -361,7 +361,7 @@ int32_t BSP_I2C2_ReadReg(uint16_t DevAddr, uint16_t Reg, uint8_t *pData, uint16_
   }
   else
   {
-    if( HAL_I2C_GetError(&hbus_i2c2) == HAL_I2C_ERROR_AF)
+    if( HAL_I2C_GetError(&hbus_i2c4) == HAL_I2C_ERROR_AF)
     {
       ret = BSP_ERROR_BUS_ACKNOWLEDGE_FAILURE;
     }
@@ -399,7 +399,7 @@ int32_t BSP_I2C2_WriteReg16(uint16_t DevAddr, uint16_t Reg, uint8_t *pData, uint
   }
   else
   {
-    if( HAL_I2C_GetError(&hbus_i2c2) == HAL_I2C_ERROR_AF)
+    if( HAL_I2C_GetError(&hbus_i2c4) == HAL_I2C_ERROR_AF)
     {
       ret = BSP_ERROR_BUS_ACKNOWLEDGE_FAILURE;
     }
@@ -437,7 +437,7 @@ int32_t BSP_I2C2_ReadReg16(uint16_t DevAddr, uint16_t Reg, uint8_t *pData, uint1
   }
   else
   {
-    if( HAL_I2C_GetError(&hbus_i2c2) == HAL_I2C_ERROR_AF)
+    if( HAL_I2C_GetError(&hbus_i2c4) == HAL_I2C_ERROR_AF)
     {
       ret = BSP_ERROR_BUS_ACKNOWLEDGE_FAILURE;
     }
@@ -468,7 +468,7 @@ int32_t BSP_I2C2_IsReady(uint16_t DevAddr, uint32_t Trials)
   /* Get semaphore to prevent multiple I2C access */
   osSemaphoreWait(BspI2cSemaphore, osWaitForever);
 #endif
-  if(HAL_I2C_IsDeviceReady(&hbus_i2c2, DevAddr, Trials, 1000) != HAL_OK)
+  if(HAL_I2C_IsDeviceReady(&hbus_i2c4, DevAddr, Trials, 1000) != HAL_OK)
   {
     ret = BSP_ERROR_BUSY;
   }
@@ -501,14 +501,14 @@ int32_t BSP_I2C2_RegisterDefaultMspCallbacks (void)
   /* Get semaphore to prevent multiple I2C access */
   osSemaphoreWait(BspI2cSemaphore, osWaitForever);
 #endif
-  __HAL_I2C_RESET_HANDLE_STATE(&hbus_i2c2);
+  __HAL_I2C_RESET_HANDLE_STATE(&hbus_i2c4);
 
   /* Register default MspInit/MspDeInit Callback */
-  if(HAL_I2C_RegisterCallback(&hbus_i2c2, HAL_I2C_MSPINIT_CB_ID, I2C2_MspInit) != HAL_OK)
+  if(HAL_I2C_RegisterCallback(&hbus_i2c4, HAL_I2C_MSPINIT_CB_ID, I2C2_MspInit) != HAL_OK)
   {
     ret = BSP_ERROR_PERIPH_FAILURE;
   }
-  else if(HAL_I2C_RegisterCallback(&hbus_i2c2, HAL_I2C_MSPDEINIT_CB_ID, I2C2_MspDeInit) != HAL_OK)
+  else if(HAL_I2C_RegisterCallback(&hbus_i2c4, HAL_I2C_MSPDEINIT_CB_ID, I2C2_MspDeInit) != HAL_OK)
   {
     ret = BSP_ERROR_PERIPH_FAILURE;
   }
@@ -537,14 +537,14 @@ int32_t BSP_I2C2_RegisterMspCallbacks (BSP_I2C_Cb_t *Callback)
   /* Get semaphore to prevent multiple I2C access */
   osSemaphoreWait(BspI2cSemaphore, osWaitForever);
 #endif
-  __HAL_I2C_RESET_HANDLE_STATE(&hbus_i2c2);
+  __HAL_I2C_RESET_HANDLE_STATE(&hbus_i2c4);
 
   /* Register MspInit/MspDeInit Callbacks */
-  if(HAL_I2C_RegisterCallback(&hbus_i2c2, HAL_I2C_MSPINIT_CB_ID, Callback->pMspI2cInitCb) != HAL_OK)
+  if(HAL_I2C_RegisterCallback(&hbus_i2c4, HAL_I2C_MSPINIT_CB_ID, Callback->pMspI2cInitCb) != HAL_OK)
   {
     ret = BSP_ERROR_PERIPH_FAILURE;
   }
-  else if(HAL_I2C_RegisterCallback(&hbus_i2c2, HAL_I2C_MSPDEINIT_CB_ID, Callback->pMspI2cDeInitCb) != HAL_OK)
+  else if(HAL_I2C_RegisterCallback(&hbus_i2c4, HAL_I2C_MSPDEINIT_CB_ID, Callback->pMspI2cDeInitCb) != HAL_OK)
   {
     ret = BSP_ERROR_PERIPH_FAILURE;
   }
@@ -843,7 +843,7 @@ static void I2C2_MspDeInit(I2C_HandleTypeDef *hI2c)
   */
 static int32_t I2C2_WriteReg(uint16_t DevAddr, uint16_t Reg, uint16_t MemAddSize, uint8_t *pData, uint16_t Length)
 {
-  if(HAL_I2C_Mem_Write(&hbus_i2c2, DevAddr, Reg, MemAddSize, pData, Length, 10000) == HAL_OK)
+  if(HAL_I2C_Mem_Write(&hbus_i2c4, DevAddr, Reg, MemAddSize, pData, Length, 10000) == HAL_OK)
   {
     return BSP_ERROR_NONE;
   }
@@ -862,7 +862,7 @@ static int32_t I2C2_WriteReg(uint16_t DevAddr, uint16_t Reg, uint16_t MemAddSize
   */
 static int32_t I2C2_ReadReg(uint16_t DevAddr, uint16_t Reg, uint16_t MemAddSize, uint8_t *pData, uint16_t Length)
 {
-  if (HAL_I2C_Mem_Read(&hbus_i2c2, DevAddr, Reg, MemAddSize, pData, Length, 10000) == HAL_OK)
+  if (HAL_I2C_Mem_Read(&hbus_i2c4, DevAddr, Reg, MemAddSize, pData, Length, 10000) == HAL_OK)
   {
     return BSP_ERROR_NONE;
   }

@@ -1,4 +1,4 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
+Core/Src/retarget.o: ../Core/Src/retarget.c ../Core/Inc/retarget.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  ../Core/Inc/stm32h7xx_hal_conf.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -44,16 +44,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h \
- ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
- C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/stm32h7b3i_eval_camera.h \
- C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/stm32h7b3i_eval_errno.h \
- C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/stm32h7b3i_eval_conf.h \
- C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/ov5640.h \
- C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/ov5640_reg.h \
- ../Drivers/CMSIS/Include/cmsis_compiler.h \
- C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/camera.h \
- ../Core/Inc/retarget.h
-../Core/Inc/main.h:
+ ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
+../Core/Inc/retarget.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 ../Core/Inc/stm32h7xx_hal_conf.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h:
@@ -100,11 +92,3 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
-C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/stm32h7b3i_eval_camera.h:
-C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/stm32h7b3i_eval_errno.h:
-C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/stm32h7b3i_eval_conf.h:
-C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/ov5640.h:
-C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/ov5640_reg.h:
-../Drivers/CMSIS/Include/cmsis_compiler.h:
-C:/Users/pwl/STM32CubeIDE/camera-testing/camtest/Drivers/BSP/STM32H7B3I-DK/camera.h:
-../Core/Inc/retarget.h:
