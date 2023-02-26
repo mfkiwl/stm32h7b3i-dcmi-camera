@@ -21,7 +21,15 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stm32h7b3i_eval_camera.h"
+#include "../Peripherials/led/bsp_led.h"
+#include "../Peripherials/usart/bsp_usart.h"
+#include "../Peripherials/sdram/bsp_sdram.h"
+#include "../Peripherials/lcd/bsp_lcd.h"
+#include "string.h"
+#include "../Peripherials/i2c/bsp_i2c.h"
+#include "../Peripherials/camera/bsp_ov5640.h"
+#include "../Peripherials/camera/ov5640_AF.h"
+#include "../Peripherials/delay/core_delay.h"
 #include "retarget.h"
 #include <string.h>
 #include <stdio.h>
@@ -108,7 +116,7 @@ static void MX_I2C2_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	OV5640_IDTypeDef OV5640_Camera_ID;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -147,11 +155,8 @@ int main(void)
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
   RetargetInit(&huart1);
-  CameraResX = 320;
-  CameraResY = 240;
-  uint8_t frame_buffer[CameraResX * CameraResY * 2];
-  memset(frame_buffer, 0, CameraResX * CameraResY * 2);
-
+	I2CMaster_Init();
+	OV5640_HW_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -163,30 +168,10 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	/* Reset and power down camera to be sure camera is Off prior start testing BSP */
 	printf("STARTING\n");
-	  BSP_CAMERA_PwrDown(0);
-
-	if(BSP_CAMERA_Init(0,CAMERA_R320x240,CAMERA_PF_RGB565) != BSP_ERROR_NONE)
-	  {
-		Error_Handler();
-	  }
-
-	  /* Wait 1s to let auto-loops in the camera module converge and lead to correct exposure */
-	  HAL_Delay(1000);
-
-	  /* Start the Camera Snapshot Capture */
-	  BSP_CAMERA_Start(0,(uint8_t *)frame_buffer,CAMERA_MODE_SNAPSHOT);
-
-	  /* Wait until camera frame is ready : DCMI Frame event */
-	  while(camera_frame_ready == 0)
-	  {
-	  }
-
-
-	  /* Stop the camera to avoid having the DMA2D work in parallel of Display */
-	  /* which cause perturbation of LTDC                                      */
-	  BSP_CAMERA_Stop(0);
+	OV5640_ReadID(&OV5640_Camera_ID);
+	HAL_DELAY(1000);
+	printf("%x:%x",OV5640_Camera_ID.PIDH ,OV5640_Camera_ID.PIDL);
 	  printf("%x", frame_buffer[2137]);
-	  HAL_Delay(1000);
   }
 
 
